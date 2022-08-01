@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Piedra, papel o tijera</title>
+	<script>
+		//1 es piedra, 2 es papel, 3 es tijera
+		let pc=2;
+		jugador = prompt("Jugador, elije: 1 es piedra, 2 es papel, 3 es tijera")
+		//alert("Elejiste " + jugador)
+		if(jugador==1){alert("Elejiste piedra")}
+		else if(jugador==2){alert("Elejiste papel")}
+		else if(jugador==3){alert("Elejiste tijera")}
+		else {alert("ERROR")}
+		//Variable PC
+		if(pc==1){alert("PC eligió piedra")}
+		else if(pc==2){alert("PC eligió papel")}
+		else if(pc==3){alert("PC eligió tijera")}
+		else {alert("ERROR")}
+		//Combate
+		if(pc==jugador){alert("Empate")}
+		else if((pc==1 && jugador==2)||(pc==2 && jugador==3)||(pc==3 && jugador==1)){alert("Ganaste")}
+		else if((pc==1 && jugador==3)||(pc==2 && jugador==1)||(pc==3 && jugador==2)){alert("Perdiste")}
+		else {alert("ERROR")}
+	</script>
+</head>
+<body>
+	<h1>Juego de Piedra, papel o tijera</h1>
+	<p>Ingresa tus opciones y encuentra si ganas o pierdes</p>
+</body>
+</html>
