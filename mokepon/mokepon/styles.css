@@ -3,7 +3,6 @@
 body{
     font-family: 'Silkscreen', cursive;
     background-color: aquamarine;
-    font-size: auto;
     
 }
 
@@ -36,10 +35,10 @@ body{
 
 
 
-.tarjetas{
+.tarjetas, .tarjetas-ataques{
     display: flex;
     gap: 10px;
-    width: 500px;
+    width: 380px;
     justify-content: space-between;
     border: none;
     margin: none;
@@ -80,4 +79,73 @@ body{
 
 input{
     display: none;
+}
+
+input:checked + label { 
+    background-color: #3B9AE1;
+}
+#seleccionar-ataque{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.boton-de-ataque{
+    display: flex;
+    background-color: #5800FF;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 120px;
+    height: 50px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    align-items: center
+    
+}
+
+#mensajes{
+    width: 200px;
+    background: #FFE9AE;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#boton-reiniciar{
+    border: 1px solid black;
+    color: #6bc572;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+}
+
+.ataques{
+    display: grid;
+    grid-template-columns: 100px 100px;
+}
+
+.ataques-jugador, .ataques-enemigo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+@media(max-width: 600px){
+    .tarjetas, .tarjetas-ataques{
+        flex-direction: column;
+        align-items: center;
+    }
+    #boton-mascota{
+        width: 150px;
+    }
+    .boton-de-ataque{
+        flex-direction: row;
+    }
 }
