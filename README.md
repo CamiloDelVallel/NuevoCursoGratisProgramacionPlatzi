@@ -7,4 +7,4 @@ JS
 CSS
 Optimización de código
 
-Esto y mucho más se puede ver en los resultados del navegador
+Esto y mucho más se puede ver en la carpeta de MOKEPON 
