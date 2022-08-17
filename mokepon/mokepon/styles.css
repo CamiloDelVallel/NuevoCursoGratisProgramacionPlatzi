@@ -102,7 +102,8 @@ input:checked + label {
     color: white;
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
-    align-items: center
+    align-items: center;
+    justify-content: center;
     
 }
 
