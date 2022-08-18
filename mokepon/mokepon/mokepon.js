@@ -114,12 +114,11 @@ function seleccionarMascotaJugador(){
     } else {
         return alert("No Elegiste nada")
     }
-    
+    extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
     sectionSeleccionarAtaque.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
 
-    extraerAtaques(mascotaJugador)
 }
 
 function extraerAtaques(mascotaJugador){
@@ -145,7 +144,6 @@ function mostrarAtaques(ataques){
     botonAgua= document.getElementById("boton-agua")
     botonTierra= document.getElementById("boton-tierra")
     botones = document.querySelectorAll(".BAtaque")
-   
 }
 
 function secuenciaAtaque(){
@@ -164,7 +162,6 @@ function secuenciaAtaque(){
                 console.log(ataqueJugador)
                 boton.style.background = "#000000"
             }
-            console.log(e)
         })
     })
 }
@@ -173,10 +170,9 @@ function seleccionarMascotaEnemigo(){
     let mascotaAleatoria = aleatorio(0,mokepones.length-1)
     
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
-    //secuenciaAtaque()
+    secuenciaAtaque()
 
 }
-
 
 function AtaqueAleatorioEnemigo(){
     let ataqueAleatorio = aleatorio(1,3)
