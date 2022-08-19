@@ -32,10 +32,12 @@ let botonAgua
 let botonTierra
 let botones=[]
 let ataquesMokeponEnemigo
+let indexAtaqueJugador
+let indexAtaqueEnemigo
 
 
-let vidasJugador = 3
-let vidasEnemigo = 3
+let victoriasJugador = 0
+let victoriasEnemigo = 0
 
 class Mokepon {
     constructor(nombre, foto, vida){
@@ -154,14 +156,19 @@ function secuenciaAtaque(){
                 ataqueJugador.push("Fuego")
                 console.log(ataqueJugador)
                 boton.style.background = "#000000"
+                boton.disabled=true
             } else if(e.target.textContent === "🌊"){
                 ataqueJugador.push("Agua")
                 console.log(ataqueJugador)
                 boton.style.background = "#000000"
+                boton.disabled=true
+
             } else {
                 ataqueJugador.push("Tierra")
                 console.log(ataqueJugador)
                 boton.style.background = "#000000"
+                boton.disabled=true
+
             }
             ataqueAleatorioEnemigo()
         })
@@ -199,19 +206,28 @@ function iniciarPelea(){
     }
 }
 
+function indexAmbosOponentes(jugador, enemigo){
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+
+}
+
 function batalla(){
 
     for (let i = 0; i < ataqueJugador.length; i++) {
         if(ataqueJugador[i]==ataqueEnemigo[i]){
-        crearMensaje("Empate")
+            indexAmbosOponentes(i, i)
+            crearMensaje()
         } else if((ataqueJugador[i]=="Fuego" && ataqueEnemigo[i]=="Tierra")||(ataqueJugador[i]=="Agua" && ataqueEnemigo[i]=="Fuego")||(ataqueJugador[i]=="Tierra" && ataqueEnemigo[i]=="Agua")){
-            crearMensaje("Ganaste")
-            vidasEnemigo--
-            spanVidasEnemigo.innerHTML=vidasEnemigo
+            indexAmbosOponentes(i, i)
+            crearMensaje()
+            victoriasJugador++
+            spanVidasJugador.innerHTML=victoriasJugador
         } else {
-            crearMensaje("Perdiste")
-            vidasJugador--
-            spanVidasJugador.innerHTML=vidasJugador
+            indexAmbosOponentes(i, i)
+            crearMensaje()
+            victoriasEnemigo++
+            spanVidasEnemigo.innerHTML=victoriasEnemigo
         }
         revisarVidas()
     }
@@ -219,9 +235,9 @@ function batalla(){
 
 
 function revisarVidas(){
-    if(ataqueJugador.length === 5 && vidasEnemigo>vidasJugador){
+    if(victoriasEnemigo>victoriasJugador){
        crearMensajeFinal("Lo siento, perdiste")
-    } else if(ataqueJugador.length === 5 && vidasEnemigo<vidasJugador){
+    } else if(victoriasEnemigo<victoriasJugador){
         crearMensajeFinal("Ganaste, felicitaciones")
     } 
     else{
@@ -234,8 +250,8 @@ function crearMensaje(resultado){
     let nuevoAtaqueDelEnemigo = document.createElement("p")
 
     sectionMensajes.innerHTML = resultado
-    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
-    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+    nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo
 
     ataqueDelJugador.appendChild(nuevoAtaqueDelJugador)
     ataqueDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
@@ -243,9 +259,6 @@ function crearMensaje(resultado){
 
 function crearMensajeFinal(resultadoFinal){
     sectionMensajes.innerHTML = resultadoFinal
-    botonFuego.disabled = true
-    botonAgua.disabled = true
-    botonTierra.disabled = true
     sectionReiniciar.style.display = "flex"
 }
 
