@@ -144,6 +144,21 @@ input:checked + label {
     justify-content: center;
 }
 
+#ver-mapa button{
+        height: 40px;
+        width: 80px;
+        color: #C21010;
+        border: 1px solid black;
+        background-color: #FFFDE3;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin: 5px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+}
+    
+
+
 @media(max-width: 600px){
     .tarjetas, .tarjetas-ataques{
         flex-direction: column;
@@ -157,3 +172,12 @@ input:checked + label {
     }
 }
 
+@media(max-width: 360px){
+    #ver-mapa div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+}

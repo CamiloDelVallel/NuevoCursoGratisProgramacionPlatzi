@@ -92,8 +92,8 @@ let capipepo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capi
 let ratigueya = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp")
 
 let hipodogeEnemigo = new Mokepon("Hipodoge", "./mokepon/Imagenes/mokepons_mokepon_hipodoge_attack.webp", 5, "./mokepon/Imagenes/hipodoge.webp", anchoDelMapa*0.3, alturaQueBuscamos*0.8)
-let capipepoEnemigo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "./mokepon/Imagenes/capipepo.webp",anchoDelMapa*0.9, alturaQueBuscamos*0.65)
-let ratigueyaEnemigo = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp",anchoDelMapa*0.95, alturaQueBuscamos*0.4)
+let capipepoEnemigo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "./mokepon/Imagenes/capipepo.webp",anchoDelMapa*0.7, alturaQueBuscamos*0.65)
+let ratigueyaEnemigo = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp",anchoDelMapa*0.75, alturaQueBuscamos*0.4)
 
 
 hipodoge.ataques.push(
@@ -174,9 +174,7 @@ function iniciarJuego(){
 }
 
 function seleccionarMascotaJugador(){
-
     sectionSeleccionarMascota.style.display = "none"
-
 
     if(inputHipoge.checked==true){
         spanMascotaJugador.innerHTML=inputHipoge.id
