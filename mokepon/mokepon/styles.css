@@ -12,7 +12,7 @@ body{
     justify-content: center;
     border-radius: 8px;
     color: #76BA99;
-    width: 500px;
+    width: 935px;
     height: 70px;
     background-color: #FAF3E3 ;
     font-size: 44px;
@@ -146,7 +146,7 @@ input:checked + label {
 
 #mapa {
     border: 2px solid white; 
-    width: 800px;
+    width: 500px;
     height: 350px;
 }
 
