@@ -21,6 +21,8 @@ const contenedorAtaques=document.getElementById("contenedor-ataques")
 const sectionVerMapa = document.getElementById("ver-mapa")
 const mapa = document.getElementById("mapa")
 
+const anchoMaximoDelMapa = 600
+
 let mokepones = []
 let ataqueJugador = []
 let ataqueEnemigo =[]
@@ -42,9 +44,20 @@ let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = "/mokepon/mokepon/Imagenes/mokemap.webp"
 let mascotaJugadorObjeto
+let alturaQueBuscamos
+let anchoDelMapa = window.innerWidth * 0.6
+
+alturaQueBuscamos = anchoDelMapa * 3/4 * 0.6
+mapa.width = anchoDelMapa
+mapa.height = alturaQueBuscamos
+
 
 let victoriasJugador = 0
 let victoriasEnemigo = 0
+
+if (anchoDelMapa>anchoMaximoDelMapa){
+    anchoDelMapa = anchoMaximoDelMapa - 20
+}
 
 class Mokepon {
     constructor(nombre, foto, vida, fotoMapa, x=10, y=10){
@@ -54,8 +67,8 @@ class Mokepon {
         this.ataques = []
         this.x = x
         this.y = y
-        this.ancho = 30
-        this.alto = 30
+        this.ancho = 50
+        this.alto = 50
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
@@ -78,9 +91,9 @@ let hipodoge = new Mokepon("Hipodoge", "./mokepon/Imagenes/mokepons_mokepon_hipo
 let capipepo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "./mokepon/Imagenes/capipepo.webp")
 let ratigueya = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp")
 
-let hipodogeEnemigo = new Mokepon("Hipodoge", "./mokepon/Imagenes/mokepons_mokepon_hipodoge_attack.webp", 5, "./mokepon/Imagenes/hipodoge.webp", 60, 110)
-let capipepoEnemigo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "./mokepon/Imagenes/capipepo.webp", 180, 90)
-let ratigueyaEnemigo = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp",200, 58)
+let hipodogeEnemigo = new Mokepon("Hipodoge", "./mokepon/Imagenes/mokepons_mokepon_hipodoge_attack.webp", 5, "./mokepon/Imagenes/hipodoge.webp", anchoDelMapa*0.3, alturaQueBuscamos*0.8)
+let capipepoEnemigo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "./mokepon/Imagenes/capipepo.webp",anchoDelMapa*0.9, alturaQueBuscamos*0.65)
+let ratigueyaEnemigo = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp",anchoDelMapa*0.95, alturaQueBuscamos*0.4)
 
 
 hipodoge.ataques.push(
@@ -354,19 +367,19 @@ function pintarCanvas(){
 
 
 function moverDerecha(){
-    mascotaJugadorObjeto.velocidadX = + 5
+    mascotaJugadorObjeto.velocidadX = + 15
 }
 
 function moverIzquierda(){
-    mascotaJugadorObjeto.velocidadX = - 5
+    mascotaJugadorObjeto.velocidadX = - 15
 }
 
 function moverAbajo(){
-    mascotaJugadorObjeto.velocidadY = + 5
+    mascotaJugadorObjeto.velocidadY = + 15
 }
 
 function moverArriba(){
-    mascotaJugadorObjeto.velocidadY = - 5
+    mascotaJugadorObjeto.velocidadY = - 15
 }
 
 function detenerMovimiento(){
