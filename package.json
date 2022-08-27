@@ -1,0 +1,23 @@
+{
+  "name": "mokepon",
+  "version": "1.0.0",
+  "description": "Dejaré por acá los ejercicios que se van aprendiendo en la clase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CamiloDelVallel/NuevoCursoGratisProgramacionPlatzi.git"
+  },
+  "author": "Camilo Del Valle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CamiloDelVallel/NuevoCursoGratisProgramacionPlatzi/issues"
+  },
+  "homepage": "https://github.com/CamiloDelVallel/NuevoCursoGratisProgramacionPlatzi#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
+}

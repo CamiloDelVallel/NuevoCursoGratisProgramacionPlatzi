@@ -171,6 +171,20 @@ function iniciarJuego(){
 
     botonMascotaJugador.addEventListener("click",seleccionarMascotaJugador)
     botonReiniciar.addEventListener("click", reiniciarJuego)
+    
+    unirseAlJuego()
+}
+
+function unirseAlJuego(){
+    fetch("http://localhost:8080/unirse")
+        .then(function (res) {
+            if (res.ok){
+                res.text()
+                    .then(function (respuesta){
+                        console.log(respuesta)
+                    })
+            }
+        })
 }
 
 function seleccionarMascotaJugador(){
@@ -188,10 +202,17 @@ function seleccionarMascotaJugador(){
     } else {
         return alert("No Elegiste nada")
     }
+
+    seleccionarMokepon(mascotaJugador)
+
     extraerAtaques(mascotaJugador)
     sectionVerMapa.style.display = "flex"
     iniciarMapa()
 
+}
+
+function seleccionarMokepon(mascotaJugador){
+    fetch(`http://localhost:8080//mokepon/${jugadorId}`)
 }
 
 function extraerAtaques(mascotaJugador){
