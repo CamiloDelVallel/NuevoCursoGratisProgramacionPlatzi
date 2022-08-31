@@ -23,6 +23,7 @@ const mapa = document.getElementById("mapa")
 
 const anchoMaximoDelMapa = 600
 
+
 let mokepones = []
 let ataqueJugador = []
 let ataqueEnemigo =[]
@@ -54,6 +55,8 @@ mapa.height = alturaQueBuscamos
 
 let victoriasJugador = 0
 let victoriasEnemigo = 0
+
+let jugadorId = null
 
 if (anchoDelMapa>anchoMaximoDelMapa){
     anchoDelMapa = anchoMaximoDelMapa - 20
@@ -182,6 +185,7 @@ function unirseAlJuego(){
                 res.text()
                     .then(function (respuesta){
                         console.log(respuesta)
+                        jugadorId = respuesta
                     })
             }
         })
@@ -212,7 +216,15 @@ function seleccionarMascotaJugador(){
 }
 
 function seleccionarMokepon(mascotaJugador){
-    fetch(`http://localhost:8080//mokepon/${jugadorId}`)
+    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mokepon: mascotaJugador
+        })
+    })
 }
 
 function extraerAtaques(mascotaJugador){
