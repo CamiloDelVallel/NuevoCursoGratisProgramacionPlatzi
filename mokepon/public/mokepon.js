@@ -68,7 +68,7 @@ let indexAtaqueEnemigo
 let lienzo = mapa.getContext("2d")
 let intervalo
 let mapaBackground = new Image()
-mapaBackground.src = "/mokepon/mokepon/Imagenes/mokemap.webp"
+mapaBackground.src = "./Imagenes/mokemap.webp"
 let mascotaJugadorObjeto
 let alturaQueBuscamos
 let anchoDelMapa = window.innerWidth * 0.6
@@ -116,9 +116,9 @@ class Mokepon {
 }
 
 
-let hipodoge = new Mokepon("Hipodoge", "./mokepon/Imagenes/mokepons_mokepon_hipodoge_attack.webp", 5, "./mokepon/Imagenes/hipodoge.webp")
-let capipepo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "./mokepon/Imagenes/capipepo.webp")
-let ratigueya = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp")
+let hipodoge = new Mokepon("Hipodoge", "/Imagenes/mokepons_mokepon_hipodoge_attack.webp", 5, "Imagenes/hipodoge.webp")
+let capipepo = new Mokepon("Capipepo", "Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "Imagenes/capipepo.webp")
+let ratigueya = new Mokepon("Ratigueya", "Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "/Imagenes/ratigueya.webp")
 
 hipodoge.ataques.push(...hipodoge_ataques)
 
@@ -157,7 +157,7 @@ function iniciarJuego(){
 }
 
 function unirseAlJuego(){
-    fetch("http://localhost:8080/unirse")
+    fetch("http://192.168.26.6:8080/unirse")
         .then(function (res) {
             if (res.ok){
                 res.text()
@@ -170,7 +170,6 @@ function unirseAlJuego(){
 }
 
 function seleccionarMascotaJugador(){
-    sectionSeleccionarMascota.style.display = "none"
 
     if(inputHipoge.checked==true){
         spanMascotaJugador.innerHTML=inputHipoge.id
@@ -182,8 +181,10 @@ function seleccionarMascotaJugador(){
         spanMascotaJugador.innerHTML=inputRatigueya.id
         mascotaJugador = inputRatigueya.id
     } else {
-        return alert("No Elegiste nada")
+        alert("No Elegiste nada")
+        return
     }
+    sectionSeleccionarMascota.style.display = "none"
 
     seleccionarMokepon(mascotaJugador)
 
@@ -194,7 +195,7 @@ function seleccionarMascotaJugador(){
 }
 
 function seleccionarMokepon(mascotaJugador){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+    fetch(`http://192.168.26.6:8080/mokepon/public/${jugadorId}`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -259,7 +260,7 @@ function secuenciaAtaque(){
 }
 
 function enviarAtaques(){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`, {
+    fetch(`http://192.168.26.6:8080/mokepon/public/${jugadorId}/ataques`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -273,7 +274,7 @@ function enviarAtaques(){
 }
 
 function obtenerAtaques(){
-    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    fetch(`http://192.168.26.6:8080/mokepon/public/${enemigoId}/ataques`)
         .then(function(res){
             if(res.ok){
                 res.json()
@@ -406,7 +407,7 @@ function pintarCanvas(){
 }
 
 function enviarPosicion(x, y){
-    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+    fetch(`http://192.168.26.6:8080/mokepon/public/${jugadorId}/posicion`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -425,11 +426,11 @@ function enviarPosicion(x, y){
                         let mokeponEnemigo = null
                         const mokeponNombre = enemigo.mokepon.nombre || ""
                         if (mokeponNombre==="Hipodoge"){
-                            mokeponEnemigo = new Mokepon("Hipodoge", "./mokepon/Imagenes/mokepons_mokepon_hipodoge_attack.webp", 5, "./mokepon/Imagenes/hipodoge.webp", enemigo.id, anchoDelMapa*0.3, alturaQueBuscamos*0.8)
+                            mokeponEnemigo = new Mokepon("Hipodoge", "/Imagenes/mokepons_mokepon_hipodoge_attack.webp", 5, "/Imagenes/hipodoge.webp", enemigo.id, anchoDelMapa*0.3, alturaQueBuscamos*0.8)
                         } else if (mokeponNombre === "Capipepo"){
-                            mokeponEnemigo = new Mokepon("Capipepo", "./mokepon/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "./mokepon/Imagenes/capipepo.webp", enemigo.id, anchoDelMapa*0.7, alturaQueBuscamos*0.65)
+                            mokeponEnemigo = new Mokepon("Capipepo", "/Imagenes/mokepons_mokepon_capipepo_attack.webp", 5, "/Imagenes/capipepo.webp", enemigo.id, anchoDelMapa*0.7, alturaQueBuscamos*0.65)
                         } else if (mokeponNombre === "Ratigueya"){
-                            mokeponEnemigo = new Mokepon("Ratigueya", "./mokepon/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "./mokepon/Imagenes/ratigueya.webp", enemigo.id, anchoDelMapa*0.75, alturaQueBuscamos*0.4)
+                            mokeponEnemigo = new Mokepon("Ratigueya", "/Imagenes/mokepons_mokepon_ratigueya_attack.webp", 5, "/Imagenes/ratigueya.webp", enemigo.id, anchoDelMapa*0.75, alturaQueBuscamos*0.4)
                         }
 
                         mokeponEnemigo.x = enemigo.x
